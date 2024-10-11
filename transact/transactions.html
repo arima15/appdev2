@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Transactions</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="transactions.css">
+    <link rel="stylesheet" href="../essential styling/header.css">
+    <link rel="stylesheet" href="../essential styling/left-sidebar.css">
+    <link rel="stylesheet" href="../essential styling/logout/logout.css">
+    <link rel="stylesheet" href="../essential styling/dropdown/dropdown.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-left">
+            <button class="sidebar-toggle">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a href="../Homepage.html" class="home-link">Home</a>
+            <a href="../faq.html" class="faq-link">FAQ</a>
+        </div>
+        <div class="header-right">
+            <h1>Clinic Appointment System</h1>
+        </div>
+    </header>
+
+    <div class="sidebar">
+
+        <nav id="navbar">
+            <span class="close">&times;</span>
+            <div class="profile">
+                <img src="../appointment/profilepic.png" alt="Profile Picture" class="profile-picture">
+                <div class="profile-text">
+                    <h4>Karl Vilar</h4>
+                    <p><a href="#">Visit profile</a></p>
+                </div>
+            </div>
+            <hr>
+            <ul>
+                <li><a href="../Dashboard/dashboard.html" id="programMenu">Dashboard</a></li>
+                <li><a href="../events/events.html">Events</a></li> 
+                <li><a href="../transact/transactions.html">Transaction</a></li>
+                <li><p id="studentMenu" onclick="toggleDropdown(event)">Appointment</p></li> 
+                <div class="dropdown-content" id="dropdownMenu">
+                    <a href="../appointment/pending/pending.html">Pending</a>
+                    <a href="../appointment/accepted/accepted.html">Approved</a>
+                    <a href="../appointment/rejected/rejected.html">Rejected</a>
+                </div>
+                <li><a href="#" class="logout">Log out</a></li>
+            </ul>
+        </nav>
+        
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p><i class="bx bx-phone"></i> +1 (123) 456-7890</p>
+            <p><i class="bx bx-envelope"></i> support@clinic.com</p>
+            <p><i class="bx bx-map"></i> 123 Clinic St, Mandaue City, Cebu</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="transaction-header">
+            <h2>ALL TRANSACTION</h2>
+            <div class="breadcrumb">
+                <a href="#">Home</a> / <a href="#">List of Transaction</a>
+            </div>
+        </div>
+        <div class="transaction-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Transaction No.</th>
+                        <th>Services</th>
+                        <th>Date Appointment</th>
+                        <th>Time Slot</th>
+                        <th>Date Seen</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="status completed">Completed</span></td>
+                        <td>TR-20230601-638835</td>
+                        <td>Tooth Extractions</td>
+                        <td>Jun 01, 2023</td>
+                        <td>12:00 PM - 12:30 PM</td>
+                        <td>2023-06-01 06:15:00</td>
+                        <td>
+                            <button class="action-btn receipt-btn" title="Appointment Receipt">🧾</button>
+                            <button class="action-btn edit-btn" title="Edit">✏️</button>
+                            <button class="action-btn delete-btn" title="Delete">❌</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="status rejected">Rejected</span></td>
+                        <td>TR-20230601-361239</td>
+                        <td>Dental Bonding</td>
+                        <td>Jun 01, 2023</td>
+                        <td>12:00 PM - 12:30 PM</td>
+                        <td>2023-06-01 02:09:35</td>
+                        <td>
+                            <button class="action-btn receipt-btn" title="Appointment Receipt">🧾</button>
+                            <button class="action-btn edit-btn" title="Edit">✏️</button>
+                            <button class="action-btn delete-btn" title="Delete">❌</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="status approved">Approved</span></td>
+                        <td>TR-20230601-361239</td>
+                        <td>Dental Bonding</td>
+                        <td>Jun 01, 2023</td>
+                        <td>12:00 PM - 12:30 PM</td>
+                        <td>2023-06-02 11:09:41</td>
+                        <td>
+                            <button class="action-btn receipt-btn" title="Appointment Receipt">🧾</button>
+                            <button class="action-btn edit-btn" title="Edit">✏️</button>
+                            <button class="action-btn delete-btn" title="Delete">❌</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pagination">
+                <span>Showing 1 to 3 of 3 entries</span>
+                <ul>
+                    <li><a href="#">Previous</a></li>
+                    <li><a href="#" class="active">1</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const sidebarToggles = document.querySelectorAll('.sidebar-toggle');
+        const body = document.body;
+        const sidebar = document.querySelector('.sidebar');
+
+        sidebarToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                body.classList.toggle('sidebar-visible');
+            });
+        });
+    });
+    </script>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Are you sure you want to log out?</h2>
+            <button id="confirm-logout" class="logbttn">Yes</button>
+            <button id="cancel-logout" class="logbttn">No</button>
+        </div>
+    </div>
+
+    <script src="../essential styling/logout/logout.js"></script>
+    <script src="../essential styling/dropdown/dropdown.js"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Calendar</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="events.css">
+    <link rel="stylesheet" href="../essential styling/left-sidebar.css">
+    <link rel="stylesheet" href="../essential styling/logout/logout.css">
+    <link rel="stylesheet" href="../essential styling/header.css">
+    <link rel="stylesheet" href="../essential styling/dropdown/dropdown.css">
+
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-left">
+            <button class="sidebar-toggle">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a href="../Homepage.html" class="home-link">Home</a>
+            <a href="../faq.html" class="faq-link">FAQ</a>
+        </div>
+        <div class="header-right">
+            <h1>Clinic Appointment System</h1>
+        </div>
+    </header>
+
+    <div class="sidebar">
+
+        <nav id="navbar">
+            <span class="close">&times;</span>
+            <div class="profile">
+                <img src="../appointment/profilepic.png" alt="Profile Picture" class="profile-picture">
+                <div class="profile-text">
+                    <h4>Karl Vilar</h4>
+                    <p><a href="#">Visit profile</a></p>
+                </div>
+            </div>
+            <hr>
+            <ul>
+                <li><a href="../Dashboard/dashboard.html" id="programMenu">Dashboard</a></li>
+                <li><a href="../events/events.html">Events</a></li> 
+                <li><a href="../transact/transactions.html">Transaction</a></li>
+                <li><p id="studentMenu" onclick="toggleDropdown(event)">Appointment</p></li> 
+                <div class="dropdown-content" id="dropdownMenu">
+                    <a href="../appointment/pending/pending.html">Pending</a>
+                    <a href="../appointment/accepted/accepted.html">Approved</a>
+                    <a href="../appointment/rejected/rejected.html">Rejected</a>
+                </div>
+                <li><a href="#" class="logout">Log out</a></li>
+            </ul>
+        </nav>
+
+       <div class="contact-info">
+           <h3>Contact Us</h3>
+           <p><i class="bx bx-phone"></i> +1 (123) 456-7890</p>
+           <p><i class="bx bx-envelope"></i> support@clinic.com</p>
+           <p><i class="bx bx-map"></i> 123 Clinic St, Mandaue City, Cebu</p>
+       </div>
+   </div>
+
+
+   <div class="main-content">
+    <div class="container">
+        <div class="header">
+            <h2>Current Appointments</h2>
+            <div class="breadcrumb">
+                <a href="#">Home</a> / <a href="#">Appointments</a>
+            </div>
+        </div>
+
+        <div class="appointments">
+            <table class="appointments-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Details</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2023-10-01</td>
+                        <td>10:00 AM</td>
+                        <td>Medical Mission</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2023-10-02</td>
+                        <td>03:00 PM</td>
+                        <td>AAABOOO</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2023-10-03</td>
+                        <td>11:00 AM</td>
+                        <td>Dental Checkup</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2023-10-04</td>
+                        <td>01:00 PM</td>
+                        <td>Follow-up Appointment</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2023-10-05</td>
+                        <td>09:00 AM</td>
+                        <td>Vaccination</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Additional rows for other appointments -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="slot-management">
+            <h3>Manage Slots</h3>
+            <form id="create-slot-form">
+                <label for="slot-date">Select Date:</label>
+                <input type="date" id="slot-date" required>
+                <label for="slot-time">Select Time:</label>
+                <input type="time" id="slot-time" required>
+                <button type="submit">Create Slot</button>
+            </form>
+            <button class="delete-all-btn">Delete All Slots</button>
+            <button class="edit-appointments-btn">Edit Appointments</button> <!-- New Edit Appointments Button -->
+        </div>
+    </div>
+</div>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Are you sure you want to log out?</h2>
+            <button id="confirm-logout" class="logbttn">Yes</button>
+            <button id="cancel-logout" class="logbttn">No</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const sidebarToggles = document.querySelectorAll('.sidebar-toggle');
+        const body = document.body;
+        const sidebar = document.querySelector('.sidebar');
+
+        sidebarToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                body.classList.toggle('sidebar-visible');
+                sidebar.style.left = body.classList.contains('sidebar-visible') ? '0' : '-250px';
+            });
+        });
+    });
+    </script>
+
+    <script src="forEvents.js"></script>
+    <script src="../essential styling/logout/logout.js"></script>
+    <script src="../essential styling/dropdown/dropdown.js"></script>
+</body>
+</html>

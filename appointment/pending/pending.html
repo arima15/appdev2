@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Pending</title>
+    <link rel="stylesheet" href="pending.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="../../essential styling/left-sidebar.css">
+    <link rel="stylesheet" href="../../essential styling/logout/logout.css">
+    <link rel="stylesheet" href="../../essential styling/header.css">
+    <link rel="stylesheet" href="../../essential styling/dropdown/dropdown.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-left">
+            <button class="sidebar-toggle">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a href="../Homepage.html" class="home-link">Home</a>
+            <a href="../faq.html" class="faq-link">FAQ</a>
+        </div>
+        <div class="header-right">
+            <h1>Clinic Appointment System</h1>
+        </div>
+    </header>
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <nav id="navbar">
+            <span class="close">&times;</span>
+            <div class="profile" onclick="toggleDropdown()">
+                <img src="../profile/profilepic.png" alt="Profile Picture" class="profile-picture">
+                <div class="profile-text">
+                    <h4>Karl Vilar</h4>
+                    <p><a href="../profile/profile.html">Visit profile</a></p>
+                </div>
+            </div>
+            <hr>
+            <ul>
+                <li><a href="../../Dashboard/dashboard.html" id="programMenu">Dashboard</a></li>
+                <li><a href="../../events/events.html">Events</a></li> 
+                <li><a href="../../transact/transactions.html">Transaction</a></li>
+                <li><p id="studentMenu" onclick="toggleDropdown(event)">Appointment</p></li> 
+                <div class="dropdown-content" id="dropdownMenu">
+                    <a href="../pending/pending.html">Pending</a>
+                    <a href="../accepted/accepted.html">Approved</a>
+                    <a href="../rejected/rejected.html">Rejected</a>
+                </div>
+                <li><a href="#" class="logout">Log out</a></li>
+            </ul>
+        </nav>
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p><i class="bx bx-phone"></i> +1 (123) 456-7890</p>
+            <p><i class="bx bx-envelope"></i> support@clinic.com</p>
+            <p><i class="bx bx-map"></i> 123 Clinic St, Mandaue City, Cebu</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>List of Appointments</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Status</th>
+                    <th>Transaction No.</th>
+                    <th>Services</th>
+                    <th>Date Appointment</th>
+                    <th>Time Slot</th>
+                    <th>Date Seen</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td class="status"><span class="pending">Pending</span></td>
+                    <td>TRX123456789</td>
+                    <td>Bridgework</td>
+                    <td>Jun 02, 2023</td>
+                    <td>09:30 AM - 10:00 AM</td>
+                    <td>00:00:00 - 00:00:00</td>
+                    <td>
+                        <button class="action-btn" data-action="view"><i class="fas fa-eye"></i></button>
+                        <button class="action-btn" data-action="add"><i class="fas fa-plus"></i></button>
+                        <button class="action-btn" data-action="cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="status"><span class="pending">Pending</span></td>
+                    <td>TRX987654321</td>
+                    <td>Cosmetic Fillings</td>
+                    <td>Jun 02, 2023</td>
+                    <td>12:00 PM - 12:30 PM</td>
+                    <td>00:00:00 - 00:00:00</td>
+                    <td>
+                        <button class="action-btn" data-action="view"><i class="fas fa-eye"></i></button>
+                        <button class="action-btn" data-action="add"><i class="fas fa-plus"></i></button>
+                        <button class="action-btn" data-action="cancel"><i class="fas fa-times"></i></button>
+                    </td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Are you sure you want to log out?</h2>
+            <button id="confirm-logout" class="logbttn">Yes</button>
+            <button id="cancel-logout" class="logbttn">No</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const sidebarToggles = document.querySelectorAll('.sidebar-toggle');
+        const body = document.body;
+        const sidebar = document.querySelector('.sidebar');
+
+        sidebarToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                body.classList.toggle('sidebar-visible');
+                sidebar.style.left = body.classList.contains('sidebar-visible') ? '0' : '-250px';
+            });
+        });
+    });
+    </script>
+
+    <script src="pending.js"></script>
+    <script src="../../essential styling/logout/logout.js"></script>
+    <script src="../../essential styling/dropdown/dropdown.js"></script>
+</body>
+</html>

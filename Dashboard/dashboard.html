@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic Appointment</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="calendar/calendar.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="right-sidebar.css">
+    <link rel="stylesheet" href="../essential styling/left-sidebar.css">
+    <link rel="stylesheet" href="../essential styling/logout/logout.css">
+    <link rel="stylesheet" href="../essential styling/header.css">
+    <link rel="stylesheet" href="../essential styling/dropdown/dropdown.css">
+
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-left">
+            <button class="sidebar-toggle">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a href="../Homepage.html" class="home-link">Home</a>
+            <a href="../faq.html" class="faq-link">FAQ</a>
+        </div>
+        <div class="header-right">
+            <h1>Clinic Appointment System</h1>
+        </div>
+    </header>
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <nav id="navbar">
+            <span class="close">&times;</span>
+            <div class="profile">
+                <img src="../appointment/profilepic.png" alt="Profile Picture" class="profile-picture">
+                <div class="profile-text">
+                    <h4>Karl Vilar</h4>
+                    <p><a href="#">Visit profile</a></p>
+                </div>
+            </div>
+            <hr>
+            <ul>
+                <li><a href="../Dashboard/dashboard.html" id="programMenu">Dashboard</a></li>
+                <li><a href="../events/events.html">Events</a></li> 
+                <li><a href="../transact/transactions.html">Transaction</a></li>
+                <li><p id="studentMenu" onclick="toggleDropdown(event)">Appointment</p></li> 
+                <div class="dropdown-content" id="dropdownMenu">
+                    <a href="../appointment/pending/pending.html">Pending</a>
+                    <a href="../appointment/accepted/accepted.html">Approved</a>
+                    <a href="../appointment/rejected/rejected.html">Rejected</a>
+                </div>
+                <li><a href="#" class="logout">Log out</a></li>
+            </ul>
+        </nav>
+
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p><i class="bx bx-phone"></i> +1 (123) 456-7890</p>
+            <p><i class="bx bx-envelope"></i> support@clinic.com</p>
+            <p><i class="bx bx-map"></i> 123 Clinic St, Mandaue City, Cebu</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <section class="dashboard-section">
+            <h2>Clinic Dashboard Overview</h2>
+            <div class="dashboard">
+                <div class="card total-patients">
+                    <h3>Total Patients</h3>
+                    <p>4</p>
+                    <button class="more-info-btn">More Info</button>
+                </div>
+                <div class="card services">
+                    <h3>Services</h3>
+                    <p>11</p>
+                    <button class="more-info-btn">More Info</button>
+                </div>
+                <div class="card pending">
+                    <h3>Pending</h3>
+                    <p>6</p>
+                    <button class="more-info-btn">More Info</button>
+                </div>
+                <div class="card approved">
+                    <h3>Approved</h3>
+                    <p>1</p>
+                    <button class="more-info-btn">More Info</button>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Appointment Calendar -->
+        <div class="calendar">
+            <h3>Choose Date for Appointment</h3>
+            <div class="calendar-header">
+                <button>&lt;</button>
+                <span>June 2023</span>
+                <button>&gt;</button>
+                <button>Today</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sunday</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Calendar rows will be generated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- Legend and Holidays Section -->
+    <div class="right-sidebar">
+        <div class="legend-container">
+            <h3>Legend</h3>
+            <ul>
+                <li><span class="legend available"></span> Available</li>
+                <li><span class="legend no-slots"></span> No Slots</li>
+                <li><span class="legend fully-booked"></span> Fully Booked</li>
+                <li><span class="legend holiday"></span> Holiday</li>
+            </ul>
+        </div>
+    
+        <div class="holidays-container">
+            <h3>Holidays for 2024</h3>
+            <ul class="holiday-list">
+                <li>2024-09-04: Labor Day</li>
+                <li>2024-09-11: Patriot Day</li>
+                <li>2024-09-25: Constitution Day</li>
+                <li>2024-10-31: Halloween</li>
+                <li>2024-11-01: All Saints' Day</li>
+                <li>2024-11-02: All Souls' Day</li>
+                <li>2024-11-30: Bonifacio Day</li>
+                <li>2024-12-08: Feast of the Immaculate Conception</li>
+                <li>2024-12-24: Christmas Eve</li>
+                <li>2024-12-25: Christmas Day</li>
+                <li>2024-12-30: Rizal Day</li>
+                <li>2024-12-31: New Year's Eve</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Logout Confirmation Modal -->
+    <div id="logout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Are you sure you want to log out?</h2>
+            <button id="confirm-logout" class="logbttn">Yes</button>
+            <button id="cancel-logout" class="logbttn">No</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const sidebarToggles = document.querySelectorAll('.sidebar-toggle');
+        const body = document.body;
+        const sidebar = document.querySelector('.sidebar');
+
+        sidebarToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                body.classList.toggle('sidebar-visible');
+                sidebar.style.left = body.classList.contains('sidebar-visible') ? '0' : '-250px';
+            });
+        });
+    });
+    </script>
+
+    <script src="calendar/calendar.js"></script>
+    <script src="../essential styling/logout/logout.js"></script>
+    <script src="../essential styling/dropdown/dropdown.js"></script>
+    <!--<script>
+        // Check if the user is logged in
+        if (!sessionStorage.getItem('loggedIn')) {
+            // If not logged in, redirect to the homepage
+            window.location.href = '../Homepage.html';
+        }
+    </script> -->
+</body>
+</html>

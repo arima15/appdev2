@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Clinic Appointment System</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="faq.css">
+    <link rel="stylesheet" href="essential styling/header.css">
+    <link rel="stylesheet" href="essential styling/left-sidebar.css">
+
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-left">
+            <button class="sidebar-toggle">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a href="Homepage.html" class="home-link">Home</a>
+            <a href="faq.html" class="faq-link">FAQ</a>
+        </div>
+        <div class="header-right">
+            <h1>Clinic Appointment System</h1>
+        </div>
+    </header>
+
+    <div class="sidebar">
+        <nav id="navbar">
+            <span class="close">&times;</span>
+            <div class="profile">
+                <img src="profile/profilepic.png" alt="Profile Picture" class="profile-picture">
+                <div class="profile-text">
+                    <h4>Karl Vilar</h4>
+                    <p><a href="profile/profile.html">Visit profile</a></p>
+                </div>
+            </div>
+            <hr>
+            <ul>
+                <li><a href="profile/profile.html" id="studentMenu">Profile</a></li> 
+                <li><a href="events/events.html">Events</a></li> 
+                <li><a href="transact/transactions.html">Transaction</a></li>
+                <li><a href="appointments/appointment.html" id="programMenu">Appointment</a></li>
+                <li><a href="Homepage.html" class="logout">Log out</a></li>
+            </ul>
+        </nav>
+
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p><i class="bx bx-phone"></i> +1 (123) 456-7890</p>
+            <p><i class="bx bx-envelope"></i> support@clinic.com</p>
+            <p><i class="bx bx-map"></i> 123 Clinic St, Mandaue City, Cebu</p>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-section">
+                <h3>Clinic Hours</h3>
+                <p>The school clinic is open from 8:00 AM to 12:00 PM and 1:00 PM to 4:00 PM.</p>
+                
+                <h3>FAQs</h3>
+                <div class="faq-item-container">
+                    <div class="faq-item">
+                        <h4>Does the cost get added to my school fees?</h4>
+                        <p>No, the cost of clinic services is not added to your school fees. You will be billed separately for any services rendered.</p>
+                    </div>
+                </div>
+                <div class="faq-item-container">
+                    <div class="faq-item">
+                        <h4>Can I volunteer to help at the clinic?</h4>
+                        <p>Yes, students can volunteer to help at the clinic. Please contact the clinic administration for more details on how to apply.</p>
+                    </div>
+                </div>
+                <div class="faq-item-container">
+                    <div class="faq-item">
+                        <h4>Does the clinic do other dental care aside from dental checkups?</h4>
+                        <p>Yes, the clinic offers a range of dental services including cleanings, fillings, and extractions. Please schedule an appointment for specific services.</p>
+                    </div>
+                </div>
+                <div class="faq-item-container">
+                    <div class="faq-item">
+                        <h4>What should I do in case of a medical emergency?</h4>
+                        <p>In case of a medical emergency, please contact the campus security or go to the nearest hospital immediately.</p>
+                    </div>
+                </div>
+                <div class="faq-item-container">
+                    <div class="faq-item">
+                        <h4>How can I schedule an appointment?</h4>
+                        <p>You can schedule an appointment through the Clinic Appointment System on our website or by visiting the clinic in person.</p>
+                    </div>
+                </div>
+                <div class="faq-item-container">
+                    <div class="faq-item">
+                        <h4>Are walk-ins allowed?</h4>
+                        <p>Walk-ins are allowed but it is highly recommended to schedule an appointment to ensure timely service.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const sidebarToggles = document.querySelectorAll('.sidebar-toggle');
+        const body = document.body;
+        const sidebar = document.querySelector('.sidebar');
+
+        sidebarToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                body.classList.toggle('sidebar-visible');
+                sidebar.style.left = body.classList.contains('sidebar-visible') ? '0' : '-250px';
+            });
+        });
+    });
+    </script>
+
+</body>
+</html>
